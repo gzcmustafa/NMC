@@ -7,10 +7,18 @@ export const generateToken = (user) => {
   });
 };
 
-export const verifyToken = (token) => {
+export const verifyTokenMiddleware = async (req, res, next) => {
   try {
-    return jwt.verify(token, config.jwtSecret);
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ message: 'No token provided' });
+    }
+
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, config.jwtSecret);
+    req.user = decoded;
+    next();
   } catch (error) {
-    return null;
+    return res.status(401).json({ message: 'Invalid token' });
   }
 };
