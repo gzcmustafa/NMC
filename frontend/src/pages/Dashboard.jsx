@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 
 
 import Navbar from "@/components/navbar/Navbar";
@@ -18,7 +19,7 @@ export default function Dashboard() {
 
       {/* Main Content Area */}
       <main className="flex-1 p-6 bg-gray-50">
-        
+      <Outlet/>
       </main>
     </div>
   </div> 
