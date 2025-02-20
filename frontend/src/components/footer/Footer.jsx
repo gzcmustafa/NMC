@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div>
+    <div className=" px-10 py-8">
       <div className=" grid grid-cols-6 gap-12">
         <div className="  flex flex-col gap-3 text-sm  text-gray-600">
           <h3 className="text-gray-400 font-bold text-sm">SITE MAP</h3>

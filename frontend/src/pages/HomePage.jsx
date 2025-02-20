@@ -19,7 +19,7 @@ export default function HomePage() {
   };
   return (
     <div className="bg-white min-h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center gap-7 mb-12 w-[260px]">
+      <div className="flex flex-col items-center gap-7 mb-12 w-[260px] ">
         <div className="flex flex-col items-center w-full">
           <img className="w-[90px]" src={logo} alt="" />
           <h2 className="text-sm mt-4 whitespace-nowrap">
