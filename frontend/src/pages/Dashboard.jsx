@@ -18,7 +18,7 @@ export default function Dashboard() {
       <SideBar/>
 
       {/* Main Content Area */}
-      <main className="flex-1 p-6 bg-gray-50">
+      <main className="flex-1 p-7 bg-gray-50">
       <Outlet/>
       </main>
     </div>
