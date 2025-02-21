@@ -3,12 +3,15 @@ import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage";
 import CustomerJourney from "./pages/CustomerJourney";
-import Overview from "./components/overview/Overview";
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import OverviewIndex from "./components/overview/OverviewIndex";
+import { QueryClient,QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient()
 
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <AuthProvider>
         <Layout>
@@ -26,7 +29,7 @@ function App() {
                 index 
                 element={
                   <ProtectedRoute>
-                    <Overview/>
+                    <OverviewIndex/>
                   </ProtectedRoute>
                 }
               />
@@ -44,6 +47,7 @@ function App() {
         </Layout>
       </AuthProvider>
     </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
