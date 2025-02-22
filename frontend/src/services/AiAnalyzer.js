@@ -10,35 +10,26 @@ export const deviceReport = async (sensorData) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const prompt = `
     As a device health analyst, review this device's battery and temperature data and provide insights:
+     Device Data:
+     Battery: Currently at ${sensorData.battery}%
+     Battery History: ${sensorData.battery_history.join(", ")}%
+     Temperature: Currently at ${sensorData.temperature}°C
+     Temperature History: ${sensorData.temperature_history.join(", ")}°C
 
-    Device Data:
-    🔋 Battery: Currently at ${sensorData.battery}%
-    📊 Battery History: ${sensorData.battery_history.join(", ")}%
-    🌡️ Temperature: Currently at ${sensorData.temperature}°C
-    📈 Temperature History: ${sensorData.temperature_history.join(", ")}°C
 
-    Please analyze the data and provide your professional opinion in this format:
-
-    BATTERY HEALTH REVIEW
-    Current State: [Describe the current battery level and if it's healthy]
-    Trend Analysis: [Explain the battery consumption pattern you observe]
-    Concerns: [Mention any concerning patterns or issues you notice]
-
-    TEMPERATURE ASSESSMENT
-    Current State: [Describe if current temperature is within normal range]
-    Pattern Overview: [Explain what the temperature history tells us]
-    Risk Assessment: [Discuss any potential risks or concerns]
-
+    And give inforamtion  about;
+    1)"🔋"BATTERY HEALTH ASSESSMENT
+     Explain what the battery history tells us
+    Identified problems: [Mention any issues you notice]
+    2)"🌡️"TEMPERATURE ASSESSMENT
+     Explain what the temperature history tells us
+    Identified problems: [Mention any issues you notice, idenftified any potential risks]
     OVERALL DEVICE HEALTH
     Health Score: [0-100]
-    Summary: [Give a brief, conversational summary of the device's overall health based on these metrics]
-
+    Summary: [Give a brief, summary of the device's overall health based on these metrics 2 sentences]
     RECOMMENDATIONS
-    Based on my analysis, give recoomandation
-  
-
+    Based on devices information, give recoomandation 2 sentences
     Note: If you spot any critical issues, mark them with "⚠️" and explain why they're concerning.
-    Keep the analysis focused on battery and temperature patterns, and how they affect device health.
     `;
 
     const result = await model.generateContent(prompt);
@@ -54,53 +45,59 @@ export const deviceReport = async (sensorData) => {
 
 // fast analysis
 export const getQuickAnalysis = async (sensorData) => {
-    try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
-  
-      const prompt = `
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+
+    const prompt = `
+      Don't leave too much space in the text
       Provide a quick 2-sentence analysis of this sensor:
-      Battery: ${sensorData.battery}% (History: ${sensorData.battery_history.join(', ')}%)
-      Temperature: ${sensorData.temperature}°C (History: ${sensorData.temperature_history.join(', ')}°C)
+      Battery: ${
+        sensorData.battery
+      }% (History: ${sensorData.battery_history.join(", ")}%)
+      Temperature: ${
+        sensorData.temperature
+      }°C (History: ${sensorData.temperature_history.join(", ")}°C)
       
       Focus on the most critical information and any immediate actions needed.
       `;
-  
-      const result = await model.generateContent(prompt);
-      const responseText = result.response.text();
-      if (!responseText) throw new Error("Invalid API response");
-  
-      return responseText;
-  
-    } catch (error) {
-      console.error("Gemini AI Error:", error);
-      return "Quick analysis failed.";
-    }
-  };
 
-  // detect anomaly
+    const result = await model.generateContent(prompt);
+    const responseText = result.response.text();
+    if (!responseText) throw new Error("Invalid API response");
+
+    return responseText;
+  } catch (error) {
+    console.error("Gemini AI Error:", error);
+    return "Quick analysis failed.";
+  }
+};
+
+// detect anomaly
 export const detectAnomalies = async (sensorData) => {
-    try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
-  
-      const prompt = `
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+
+    const prompt = `
+      Don't leave too much space in the text
       Analyze this sensor data for anomalies:
-      Temperature History: ${sensorData.temperature_history.join(', ')}°C
-      Battery History: ${sensorData.battery_history.join(', ')}%
+      Temperature History: ${sensorData.temperature_history.join(", ")}°C
+      Battery History: ${sensorData.battery_history.join(", ")}%
   
       List any anomalies found in this format:
       1. Temperature Anomalies: 
       2. Battery Anomalies: 
       3. Risk Level: (High/Medium/Low)
+
+      
       `;
-  
-      const result = await model.generateContent(prompt);
-      const responseText = result.response.text();
-      if (!responseText) throw new Error("Invalid API response");
-  
-      return responseText;
-  
-    } catch (error) {
-      console.error("Gemini AI Error:", error);
-      return "Anomaly detection failed.";
-    }
-  };
+
+    const result = await model.generateContent(prompt);
+    const responseText = result.response.text();
+    if (!responseText) throw new Error("Invalid API response");
+
+    return responseText;
+  } catch (error) {
+    console.error("Gemini AI Error:", error);
+    return "Anomaly detection failed.";
+  }
+};
