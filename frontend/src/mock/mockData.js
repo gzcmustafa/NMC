@@ -14,7 +14,7 @@ export const mockDevices = [
   {
     id: uuidv4(),
     name: " Sensor 2",
-    status: "online",
+    status: "offline",
     location: { lat: 49.4875, lng: 8.4660, name: "Mannheim, Germany" }, 
     battery: 40,
     temperature: 19.8,
@@ -34,12 +34,12 @@ export const mockDevices = [
   {
     id: uuidv4(),
     name: " Sensor 4",
-    status: "offline",
+    status: "online",
     location: { lat: 49.3988, lng: 8.6724,name: "Heidelberg, Germany" },
-    battery: 60,
+    battery: 30,
     temperature: 21.7,
-    temperature_history: [21.3, 55.5, 21.7, 22.0, 22.1, 21.9, 41.6, 21.4],
-    battery_history: [90, 88, 85, 83, 80, 78, 75, 60]
+    temperature_history: [21.3, 55.5, 61.7, 22.0, 72.1, 21.9, 41.6, 21.4],
+    battery_history: [90, 88, 85, 83, 80, 66, 45, 30]
   },
   {
     id: uuidv4(),

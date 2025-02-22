@@ -5,7 +5,7 @@ export default function ProtectedRoute({ children }) {
     const { user, loading } = useAuth();
     const location = useLocation();
 
-    // Eğer yükleme devam ediyorsa, yükleme göster
+
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -14,12 +14,12 @@ export default function ProtectedRoute({ children }) {
         );
     }
 
-    // Kullanıcı giriş yapmamışsa, login sayfasına yönlendir
+ 
     if (!user) {
-        // Kullanıcının gitmeye çalıştığı sayfayı state'e kaydediyoruz
+  
         return <Navigate to="/" state={{ from: location.pathname }} replace />;
     }
 
-    // Kullanıcı giriş yapmışsa, içeriği göster
+
     return children;
 }
