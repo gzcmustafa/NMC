@@ -49,7 +49,7 @@ export default function CustomerJourney() {
         </p>
       </div>
 
-      <div className="bg-white p-4 space-y-6 font-th">
+      <div className="bg-white p-4 space-y-6 font-th dark:bg-gray-800">
         <div>
           <p className="text-2xl">Selected Branch:</p>
         </div>
@@ -74,7 +74,7 @@ export default function CustomerJourney() {
             return (
               <div
                 key={stepNumber}
-                className="flex flex-col items-center space-y-2"
+                className="flex flex-col items-center space-y-2 "
               >
                 <div className={getNumberStyle(stepNumber)}>
                   <span>{stepNumber}</span>
@@ -84,7 +84,7 @@ export default function CustomerJourney() {
                     className={stepNumber === activeStep ? "" : "opacity-40"}
                   />
                 )}
-                <p className={`whitespace-nowrap ${getTextStyle(stepNumber)}`}>
+                <p className={`whitespace-nowrap ${getTextStyle(stepNumber)} dark:text-white`}>
                   {stepLabels[stepNumber - 1]}
                 </p>
               </div>
@@ -119,7 +119,7 @@ export default function CustomerJourney() {
           <FaPlus /> Add Edge Location
         </Button>
 
-        <div className="bg-gray-100 h-[60px]"> <HiDotsHorizontal/></div>
+        <div className="bg-gray-100 h-[60px] dark:bg-gray-800"> <HiDotsHorizontal/></div>
       </div>
     </div>
   );

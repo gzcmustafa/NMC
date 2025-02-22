@@ -336,15 +336,15 @@ export default function OverviewIndex() {
   };
 
   return (
-    <div className="grid gap-6 p-6">
+    <div className="grid gap-4 p-4 md:p-6 dark:bg-gray-700 ">
       {/* row-1 */}
-      <div className="bg-white  rounded-lg p-5">
-        <div className="flex items-center">
-          <p>Selected Edge Location</p>
-          <MdArrowOutward  />
+      <div className="bg-white dark:bg-gray-800  rounded-lg p-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+          <p className="text-sm md:text-base text-gray-800 dark:text-gray-200">Selected Edge Location</p>
+          <MdArrowOutward className="hidden sm:block text-gray-600 dark:text-gray-300" />
           <div>
-            <Select>
-              <SelectTrigger  className="w-[180px]">
+            <Select className="">
+              <SelectTrigger className="w-full sm:w-[180px] dark:bg-gray-500">
                 <SelectValue placeholder="Select Edge Location" />
               </SelectTrigger>
               <SelectContent>
@@ -358,109 +358,108 @@ export default function OverviewIndex() {
       </div>
 
       {/* row-2 */}
-      <div className="  grid grid-cols-5 gap-4 ">
-        <div className="  cursor-pointer bg-white  rounded-2xl p-4  ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 ">
+        <div className="cursor-pointer bg-white dark:bg-gray-800 rounded-xl p-3 md:p-4">
           <div className="flex items-center justify-between">
-            <p className="text-gray-600">Total Edge Location</p>
-            <CiLocationOn className="text-2xl" />
+            <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">Total Edge Location</p>
+            <CiLocationOn className="text-xl md:text-2xl text-gray-600 dark:text-gray-300" />
           </div>
           <div>
-            <p className="text-2xl">{totalLocations}</p>
+            <p className="text-xl md:text-2xl mt-2 text-gray-800 dark:text-gray-200">{totalLocations}</p>
           </div>
         </div>
 
-        <div className="bg-blue-400 cursor-pointer  rounded-2xl p-4 text-white ">
-          <div className=" flex items-center justify-between">
-            <p className="">Acive/Total gNBs</p>
-            <BsBox className="text-2xl" />
+        <div className="bg-blue-400 cursor-pointer rounded-xl p-3 md:p-4 text-white">
+          <div className="flex items-center justify-between">
+            <p className="text-sm md:text-base">Active/Total gNBs</p>
+            <BsBox className="text-xl md:text-2xl" />
           </div>
           <div>
-            <p className="text-2xl">
-              {onlineDevices}/{totalDevices}
-            </p>
+            <p className="text-xl md:text-2xl mt-2">{onlineDevices}/{totalDevices}</p>
           </div>
         </div>
 
-        <div className="bg-gray-400 cursor-pointer  rounded-2xl p-4  text-white ">
+        <div className="bg-gray-400 cursor-pointer rounded-xl p-3 md:p-4 text-white">
           <div className="flex items-center justify-between">
-            <p className="">Connected Devices</p>
-            <TbWorldCheck className="text-2xl" />
+            <p className="text-sm md:text-base">Connected Devices</p>
+            <TbWorldCheck className="text-xl md:text-2xl" />
           </div>
           <div>
-            <p className="text-2xl">{totalDevices}</p>
+            <p className="text-xl md:text-2xl mt-2">{totalDevices}</p>
           </div>
         </div>
 
-        <div className="bg-gray-600 cursor-pointer  rounded-2xl p-4 text-white  ">
+        <div className="bg-gray-600 cursor-pointer rounded-xl p-3 md:p-4 text-white">
           <div className="flex items-center justify-between">
-            <p className="">Total SIMs</p>
-            <RxDashboard className="text-2xl" />
+            <p className="text-sm md:text-base">Total SIMs</p>
+            <RxDashboard className="text-xl md:text-2xl" />
           </div>
           <div>
-            <p className="text-2xl">1</p>
+            <p className="text-xl md:text-2xl mt-2">1</p>
           </div>
         </div>
 
-        <div className="bg-orange-400  cursor-pointer rounded-2xl p-4 text-white  ">
+        <div className="bg-orange-400 cursor-pointer rounded-xl p-3 md:p-4 text-white">
           <div className="flex items-center justify-between">
-            <p className="">Total Alarm</p>
-            <PiBellRinging className="text-2xl" />
+            <p className="text-sm md:text-base">Total Alarm</p>
+            <PiBellRinging className="text-xl md:text-2xl" />
           </div>
           <div>
-            <p className="text-2xl">1</p>
+            <p className="text-xl md:text-2xl mt-2">1</p>
           </div>
         </div>
       </div>
 
       {/* row-3 */}
-      <div className="grid grid-cols-[420px_1fr] gap-6">
-        <div className="bg-white rounded-2xl p-7">
-          <div className="flex items-center gap-3">
-            <BsCardList />
-            <p>Device list</p>
+      <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-4 md:gap-6 ">
+        <div className="bg-white rounded-xl p-4 md:p-6 dark:bg-gray-800">
+          <div className="flex items-center gap-2 mb-4">
+            <BsCardList className="text-lg md:text-xl" />
+            <p className="text-sm md:text-base">Device list</p>
           </div>
           <div className="space-y-3">
             {devices?.map((device) => (
               <div
                 key={device.id}
                 onClick={() => handleClick(device)}
-                className="p-3 border rounded lg-hover:bg-gray-50 cursor-pointer"
+                className="p-3 dark:border-white  border rounded hover:bg-gray-200  dark:hover:bg-gray-500  cursor-pointer transition-colors"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-medium">{device.name}</span>
-
+                <div className="flex items-center justify-between ">
+                  <span className="font-medium text-sm md:text-base">{device.name}</span>
                   <span
-                    className={`px-2 py-1 rounded-full text-sm ${
+                    className={`px-2 py-1 rounded-full text-xs md:text-sm ${
                       device.status === "online"
-                        ? "bg-green-100 text-green-900"
-                        : "bg-red-100 text-red-800"
+                        ? "bg-green-300 text-green-900"
+                        : "bg-red-300 text-red-800"
                     }`}
                   >
                     {device.status}
                   </span>
                 </div>
-                <div className="text-sm text-gray-500 mt-1">
-                  <span className="font-bold">Location:</span>{" "}
-                  {device.location.name}
+                <div className="text-xs md:text-sm text-gray-500 mt-1 dark:text-gray-200">
+                  <span className="font-bold dark:text-gray-300">Location:</span> {device.location.name}
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-7 h-full">
+        <div className="bg-white rounded-xl p-4 md:p-6 dark:bg-gray-800 ">
           <div className="mb-4">
-            <p className="font-medium">Edge Locations Map</p>
+            <p className="font-medium text-sm md:text-base dark:text-gray-200">Edge Locations Map</p>
           </div>
-          <div className="h-[400px] rounded-lg overflow-hidden relative z-[1]">
+          <div className="h-[300px] md:h-[400px] rounded-lg overflow-hidden relative z-[1]">
+            <div className="absolute inset-0 bg-white dark:bg-gray-700 z-0"></div>
             <MapContainer
               center={[49.3988, 8.6724]}
-              zoom={10}
+              zoom={9}
               style={{ height: "100%", width: "100%" }}
+              className="relative z-10"
             >
               <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                className="dark:opacity-80 dark:contrast-100 dark:invert"
               />
               {devices?.map((device) => (
                 <Marker
@@ -468,11 +467,11 @@ export default function OverviewIndex() {
                   position={[device.location.lat, device.location.lng]}
                   icon={createCustomIcon(device.status)}
                 >
-                  <Popup>
+                  <Popup >
                     <div>
                       <div className="flex flex-col">
                         <p className="font-medium text-xl">{device.name}</p>
-                        <Button onClick={()=>handleClick(device)} className=" flex items-center p-2 text-m" variant="outline">
+                        <Button onClick={()=>handleClick(device)} className=" flex items-center p-2 text-m dark:text-white" variant="outline">
                           More Info
                           <FcInfo className="text-wxl"  />
                         </Button>
@@ -501,15 +500,16 @@ export default function OverviewIndex() {
               ))}
             </MapContainer>
           </div>
+         
         </div>
       </div>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen} className="z-[100]">
-        <DialogContent className="z-[100] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[900px] max-w-[95vw]">
+      <Dialog open={isOpen} onOpenChange={setIsOpen} className="z-[100] ">
+        <DialogContent className=" dark:bg-gray-800 z-[100] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[95vw] md:w-[900px] max-w-[95vw]">
           <DialogHeader>
-            <DialogTitle className="flex items-center text-xl gap-2 mb-2">
+            <DialogTitle className="flex items-center text-lg md:text-xl gap-2 mb-2">
               {selectedDevice?.name} 
-              <p className={`text-xl ${
+              <p className={`text-lg md:text-xl ${
                 selectedDevice?.status === "online"
                   ? "text-green-600"
                   : "text-red-600"
@@ -518,13 +518,14 @@ export default function OverviewIndex() {
               </p>
             </DialogTitle>
             <DialogDescription>
-              <div className="flex text-lg items-center gap-2 border-b pb-2 mb-4">
-                <p className="text-lg font-medium">{selectedDevice?.location.name}</p>
+              <div className="flex text-base md:text-lg items-center gap-2 border-b pb-2 mb-4">
+                <p className="font-medium">{selectedDevice?.location.name}</p>
               </div>                
-              <div className="grid grid-cols-2 gap-4">
-                <div className="h-[200px] bg-white p-4 rounded-xl shadow-sm border">
-                  <p className="text-base font-medium mb-2">Battery History</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="h-[200px] bg-white p-4 rounded-xl shadow-sm border dark:bg-gray-800 ">
+                  <p className="text-sm md:text-base font-medium mb-2 dark:text-white">Battery History</p>
                   <ReactApexChart
+                    className=""
                     options={prepareChartData(selectedDevice).battery.options}
                     series={prepareChartData(selectedDevice).battery.series}
                     type="area"
@@ -532,8 +533,8 @@ export default function OverviewIndex() {
                   />
                 </div>
 
-                <div className="h-[200px] bg-white p-4 rounded-xl shadow-sm border">
-                  <p className="text-base font-medium mb-2">Temperature History</p>
+                <div className="h-[200px] bg-white p-4 rounded-xl shadow-sm border dark:bg-gray-800">
+                  <p className="text-sm md:text-base font-medium mb-2 dark:text-white">Temperature History</p>
                   <ReactApexChart
                     options={prepareChartData(selectedDevice).temperature.options}
                     series={prepareChartData(selectedDevice).temperature.series}

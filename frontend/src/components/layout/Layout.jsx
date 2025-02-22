@@ -7,12 +7,12 @@ export default function Layout({ children }) {
   const isLoginPage = location.pathname === "/";
 
   return (
-    <div className="bg-[#F2F4F6]">
-      <div>
-        <main className={`${isLoginPage ? "px-10 py-8" : ""}`}>{children}</main>
+    <div className="bg-[#F2F4F6] dark:bg-gray-800 ">
+      <div className=" ">
+        <main className={`${isLoginPage ? "px-10 py-8" : ""}`  }>{children}</main>
       </div>
 
-      <div className="mt-14">
+      <div className="mt-14  dark:border dark:border-gray-600">
         <Footer />
       </div>
     </div>

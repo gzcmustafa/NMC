@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import logo from "../assets/logo.jpeg"; 
+import logo from "../assets/nmc-logo.png"; 
 import { useAuth } from '../context/AuthContext';
 
 export default function HomePage() {
@@ -11,7 +11,7 @@ export default function HomePage() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Eğer kullanıcı zaten giriş yapmışsa ve state'te bir yönlendirme varsa
+ 
   useEffect(() => {
     const from = location.state?.from || "/dashboard";
     if (user) {
@@ -29,7 +29,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="bg-white min-h-screen flex items-center justify-center">
+    <div className="bg-white min-h-screen flex items-center justify-center dark:bg-gray-800">
       <div className="flex flex-col items-center gap-7 mb-12 w-[260px] ">
         <div className="flex flex-col items-center w-full">
           <img className="w-[90px]" src={logo} alt="" />
