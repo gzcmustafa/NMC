@@ -1,6 +1,6 @@
 # NMC
 
-Networking - Monitoring - Control 
+Networking - Monitoring - Configuration 
 
 ## Screenshots
 
