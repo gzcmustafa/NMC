@@ -61,6 +61,13 @@ Networking - Monitoring - Control
 <img src="./frontend/src/assets/customer-journey.png" alt="Customer Journey">
 </td>
 </tr>
+
+<tr>
+<td colspan="2">
+<h3 align="center">Footer</h3>
+<img src="./frontend/src/assets/footer.png" alt="Footer" style="width: 100%;">
+</td>
+</tr>
 </table>
 
 </div>
