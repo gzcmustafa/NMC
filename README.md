@@ -75,7 +75,7 @@ This project is a web-based control panel that simplifies the management of IoT 
 ##  Technologies
 
 ### Frontend
-`React` • `TypeScript` • `TailwindCSS` • `Shadcn UI` • `React Query` • `React Router` •  `ApexCharts` • `Leaflet` • `Generative AI`
+`React` • `JavaScript` • `TailwindCSS` • `Shadcn UI` • `React Query` • `React Router` •  `ApexCharts` • `Leaflet` • `Generative AI`
 
 ### Backend
 `Node.js` • `Express.js` • `JWT` • `bcryptjs` • `CORS` • `nodemon` • `dotenv`
