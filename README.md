@@ -1,6 +1,6 @@
 # NMC
 
-Networking - Monitoring - Configuration 
+This project is a web-based control panel that simplifies the management of IoT devices. With features such as real-time location tracking, visualization of critical data like battery and temperature, and anomaly detection via the ai model, it aims to optimize device performance and proactively identify potential issues. 
 
 ## Screenshots
 
